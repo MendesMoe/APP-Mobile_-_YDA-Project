@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Login from "./assets/views/connexion/Login";
-import DashAdmin from "./assets/views/dashboard/DashAdmin";
-import OrderByEntreprise from "./assets/views/details/OrderByEntreprise";
+import Login from "./src/views/connexion/Login";
+import DashAdmin from "./src/views/dashboard/DashAdmin";
+import OrderByEntreprise from "./src/views/orders/OrderByEntreprise";
 
 const Stack = createNativeStackNavigator();
 

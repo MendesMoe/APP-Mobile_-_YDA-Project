@@ -1,18 +1,19 @@
 import React from "react";
 import { Image, StyleSheet, Text, View, FlatList } from "react-native";
-import ListOdetailEntreprise from "../../../components/Orders/ListOdetailEntreprise";
+import ListOrderEntreprise from "../../../src/components/Orders/ListOrderEntreprise";
 
-import logoyda from "../../images/logo-yda.png";
+import logoyda from "./../../assets/images/logo-yda.png";
 
-export default function OrderByEntreprise() {
+export default function DashAdmin(props) {
   return (
     <View style={styles.container}>
       <Image source={logoyda} style={styles.logo_yda} />
       <Text style={styles.welcome}> </Text>
       <Text style={styles.title}>
-        Bonjour Moenah ! {"\n"} Lista detalhada de pedidos
+        Bonjour Moenah ! {"\n"} Commandes en Attente{"\n"}
+        Page 1 - Lista de empresas com Orders{"\n"} Dashboard
       </Text>
-      <ListOdetailEntreprise />
+      <ListOrderEntreprise navigation={props.navigation} />
     </View>
   );
 }

@@ -8,8 +8,8 @@ import {
   FlatList,
 } from "react-native";
 
-import logoyda from "../../images/logo-yda.png";
-import FormLogin from "../../../components/user/connexion/FormLogin";
+import logoyda from "./../../assets/images/logo-yda.png";
+import FormLogin from "../../../src/components/user/connexion/FormLogin";
 
 export default function Login(props) {
   console.log(props);

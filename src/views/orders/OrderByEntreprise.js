@@ -1,18 +1,24 @@
 import React from "react";
 import { Image, StyleSheet, Text, View, FlatList } from "react-native";
-import ListOrderEntreprise from "../../../components/Orders/ListOrderEntreprise";
+import ListOrderOdetailsEntreprise from "../../../src/components/Orders/ListOrderOdetailsEntreprise";
+import useEntreprises from "../../hooks/useEntreprises";
 
-import logoyda from "../../images/logo-yda.png";
+import logoyda from "./../../assets/images/logo-yda.png";
 
-export default function DashAdmin(props) {
+export default function OrderByEntreprise(props) {
+  const data = useEntreprises();
+  console.log("voici la data envoyé par le useEntreprise : ");
+  console.log(data);
+
   return (
     <View style={styles.container}>
       <Image source={logoyda} style={styles.logo_yda} />
       <Text style={styles.welcome}> </Text>
       <Text style={styles.title}>
-        Bonjour Moenah ! {"\n"} Commandes en Attente
+        Bonjour Moenah ! {"\n"} Lista de todas as orders de uma empresa - {"\n"}
+        OrderByEntreprise
       </Text>
-      <ListOrderEntreprise navigation={props.navigation} />
+      <ListOrderOdetailsEntreprise data={data} />
     </View>
   );
 }

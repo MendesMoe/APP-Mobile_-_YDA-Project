@@ -44,13 +44,13 @@ export default class ListOrderEntreprise extends React.Component {
   _loadData() {
     // va chercher les options de l'API
     this.getDataOrder().then((data) => {
-      console.log("State data");
-      console.log(data);
-      console.log("State data users");
-      console.log(data[1].users);
-      console.log("State data users orders");
-      console.log(data[1].users[1].orders);
-      //this.setState({ data: data }, () => {
+      // console.log("State data");
+      // console.log(data);
+      // console.log("State data users");
+      // console.log(data[1].users);
+      // console.log("State data users orders");
+      // console.log(data[1].users[1].orders);
+      // //this.setState({ data: data }, () => {
       this.setState({ data: this.getOnlyWithOrders(data) }, () => {
         // getOnlyWithOrders
         console.log(this.state.data);
