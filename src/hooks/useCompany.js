@@ -1,7 +1,6 @@
-import React from "react";
 import { useState, useEffect } from "react";
 
-const getDataOrder = async () => {
+const getDataOrder = () => {
   const url = "http://127.0.0.1:8000/api/firms";
   const options = {
     method: "GET",
@@ -11,7 +10,7 @@ const getDataOrder = async () => {
     },
   };
   console.log("function getDataOrder");
-  return await fetch(url, options).then((response) => response.json());
+  return fetch(url, options).then((response) => response.json());
 };
 
 const getOnlyWithOrders = (data) => {

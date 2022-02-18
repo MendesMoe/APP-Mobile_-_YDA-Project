@@ -1,38 +1,45 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, FlatList } from "react-native";
-import ListOrderEntreprise from "../../../src/components/Orders/ListOrderEntreprise";
+import { StyleSheet, SafeAreaView, FlatList } from "react-native";
+import useCompany from "../../hooks/useCompany";
 
-import logoyda from "./../../assets/images/logo-yda.png";
+import CompanyItem from "../../components/Orders/CompanyItem";
+import Header from "../../components/Header";
 
 export default function DashAdmin(props) {
+  console.log("les props de DashAdmin");
+  console.log(props);
+
+  const DATA = useCompany();
+  console.log("les DATA by useEntreprises in DashAdmin");
+  console.log(DATA);
+
+  const renderItem = ({ item }) => (
+    <CompanyItem item={item} navigation={props.navigation} />
+  );
+
   return (
-    <View style={styles.container}>
-      <Image source={logoyda} style={styles.logo_yda} />
-      <Text style={styles.welcome}> </Text>
-      <Text style={styles.title}>
-        Bonjour Moenah ! {"\n"} Commandes en Attente{"\n"}
-        Page 1 - Lista de empresas com Orders{"\n"} Dashboard
-      </Text>
-      <ListOrderEntreprise navigation={props.navigation} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header />
+      <FlatList
+        style={{
+          position: "absolute",
+          marginTop: "50%",
+          width: "95%",
+          //marginHorizontal: "2%",
+        }}
+        data={DATA}
+        renderItem={renderItem}
+        key={(item) => item.id}
+      />
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "column",
+    backgroundColor: "#F6F6F6",
+
     //justifyContent: "flex-start",
-  },
-  logo_yda: {
-    width: "99%",
-    height: 600,
-  },
-  title: {
-    fontSize: 20,
-    position: "absolute",
-    width: "99%",
-    textAlign: "center",
-    lineHeight: 20,
-    marginTop: 20,
   },
 });

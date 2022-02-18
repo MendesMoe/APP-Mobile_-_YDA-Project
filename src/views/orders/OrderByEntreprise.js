@@ -1,31 +1,33 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, FlatList } from "react-native";
-import ListOrderOdetailsEntreprise from "../../../src/components/Orders/ListOrderOdetailsEntreprise";
-import useEntreprises from "../../hooks/useEntreprises";
+import { Image, StyleSheet, Text, SafeAreaView, FlatList } from "react-native";
+import { executeNativeBackPress } from "react-native-screens";
+import useCustomersByCompany from "../../hooks/useCustomersByCompany";
 
 import logoyda from "./../../assets/images/logo-yda.png";
 
 export default function OrderByEntreprise(props) {
-  const data = useEntreprises();
-  console.log("voici la data envoyé par le useEntreprise : ");
-  console.log(data);
-
+  const detailCompany = props.route.params.detailCompany;
+  const customOrders = useCustomersByCompany(detailCompany.id);
+  console.log("customOrders return by useCustomersByCompany () => ");
+  console.log(customOrders);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image source={logoyda} style={styles.logo_yda} />
-      <Text style={styles.welcome}> </Text>
+
       <Text style={styles.title}>
-        Bonjour Moenah ! {"\n"} Lista de todas as orders de uma empresa - {"\n"}
-        OrderByEntreprise
+        Liste de commandes de {detailCompany.name}
+        {"\n"}
+        Prenom : {customOrders[0].firstname} et Nom : Mendes
       </Text>
-      <ListOrderOdetailsEntreprise data={data} />
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "column",
+    position: "absolute",
+    marginTop: 40,
     //justifyContent: "flex-start",
   },
   logo_yda: {
@@ -33,11 +35,16 @@ const styles = StyleSheet.create({
     height: 600,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     position: "absolute",
     width: "99%",
     textAlign: "center",
     lineHeight: 20,
-    marginTop: 20,
+  },
+  txttime: {
+    fontSize: 15,
+    fontWeight: "bold",
+    lineHeight: 32,
+    marginHorizontal: 9,
   },
 });

@@ -1,28 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function OrderItem(props) {
-  console.log("Voici props recebida neste ordem item");
-  //console.log(props.navigation);
-  //console.log(props.item.item.name);
-  //const [isSelected, setSelection] = useState(false);
+  console.log("les props de OrderItem");
+  console.log(props);
+
   return (
     <TouchableOpacity
       style={styles.unity_ing}
       onPress={() => {
+        // setIdCompany(props.item.id);
         props.navigation.navigate("OrderByEntreprise");
       }}
     >
-      {/*<Image source={props.item.item.url} style={styles.img}></Image> */}
-      {/*<Text style={styles.txt}>{props.name}</Text> */}
-      <Text style={styles.txt}> {props.item.item.name}</Text>
-      <Text style={styles.txttime}>
+      <Text style={styles.txt}>
         {" "}
-        {props.item.item.time_1}h, {props.item.item.visit_day_1}
+        {props.item.name}
+        {props.item.id}
       </Text>
       <Text style={styles.txttime}>
         {" "}
-        {props.item.item.time_2}h, {props.item.item.visit_day_2}
+        {props.item.time_1}h, {props.item.visit_day_1}
+      </Text>
+      <Text style={styles.txttime}>
+        {" "}
+        {props.item.time_2}h, {props.item.visit_day_2}
       </Text>
 
       {/*<Text>Details</Text> style={styles.btn_details} */}

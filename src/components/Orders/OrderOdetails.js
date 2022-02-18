@@ -8,15 +8,10 @@ export default function OrderOdetails(props) {
   //const [isSelected, setSelection] = useState(false);
   return (
     <View style={styles.unity_ing}>
-      {/*<Image source={props.item.item.url} style={styles.img}></Image> */}
-      {/*<Text style={styles.txt}>{props.name}</Text> */}
       <Text style={styles.txt}> {props.item}</Text>
-
       <View>
         <Text>Order+Odetails </Text>
       </View>
-
-      {/*<Text>Details</Text> style={styles.btn_details} */}
     </View>
   );
 }
