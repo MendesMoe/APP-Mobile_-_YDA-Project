@@ -1,17 +1,6 @@
 import { useState, useEffect } from "react";
 
-const getDataOrder = () => {
-  const url = "http://127.0.0.1:8000/api/firms";
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("@token"),
-      //Accept: "application/json",
-    },
-  };
-  console.log("function getDataOrder");
-  return fetch(url, options).then((response) => response.json());
-};
+import { getDataOrder } from "../services/api";
 
 const getOnlyWithOrders = (data) => {
   let companyorder = [];
@@ -42,7 +31,7 @@ const loadData = async () => {
 };
 
 export default function useEntreprises() {
-  const [entreprises, setEntreprises] = useState(loadData());
+  const [entreprises, setEntreprises] = useState("");
 
   useEffect(async () => {
     const result = await loadData();
@@ -51,11 +40,3 @@ export default function useEntreprises() {
   console.log("function useEntreprise");
   return entreprises;
 }
-
-/*
-console.log("return hook");
-console.log(result);
-
-console.log("resultado en loadData");
-console.log(resultado);
-*/

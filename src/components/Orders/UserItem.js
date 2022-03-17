@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 
-import logoCompany from "./../../assets/images/cci-logo.png";
+import avatarUser from "./../../assets/images/avatar_icon.jpg";
 
-export default function CompanyItem(props) {
-  console.log("les props de CompanyItem");
+export default function UserItem(props) {
+  console.log("les props de UserItem");
   console.log(props);
 
   return (
@@ -12,38 +12,25 @@ export default function CompanyItem(props) {
       style={styles.cartao}
       onPress={() => {
         // setIdCompany(props.item.id);
-        props.navigation.navigate("OrderByEntreprise", {
-          detailCompany: props.item,
+        props.navigation.navigate("OrderByUser", {
+          user: props.item,
           //onPress={() => navigation.goBack()}
         });
       }}
     >
       <Image
-        source={logoCompany}
+        source={avatarUser}
         style={styles.imagem}
-        accessibilityLabel={props.item.name}
+        accessibilityLabel={props.item.lastname}
       />
       <View style={styles.informacoes}>
-        <Text style={styles.nome}> {props.item.name}</Text>
+        <Text style={styles.nome}> {props.item.firstname}</Text>
       </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  txt: {
-    fontSize: 20,
-    fontWeight: "bold",
-    lineHeight: 32,
-    marginHorizontal: 7,
-  },
-  txttime: {
-    fontSize: 15,
-    fontWeight: "bold",
-    lineHeight: 32,
-    marginHorizontal: 9,
-  },
-  ////////////
   cartao: {
     backgroundColor: "#F6F6F6",
     marginVertical: 8,

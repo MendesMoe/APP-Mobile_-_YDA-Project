@@ -4,6 +4,7 @@ import useCompany from "../../hooks/useCompany";
 
 import CompanyItem from "../../components/Orders/CompanyItem";
 import Header from "../../components/Header";
+import { useNavigation } from "@react-navigation/native";
 
 export default function DashAdmin(props) {
   console.log("les props de DashAdmin");
@@ -12,6 +13,8 @@ export default function DashAdmin(props) {
   const DATA = useCompany();
   console.log("les DATA by useEntreprises in DashAdmin");
   console.log(DATA);
+
+  const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
     <CompanyItem item={item} navigation={props.navigation} />

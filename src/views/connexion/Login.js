@@ -2,10 +2,10 @@ import React from "react";
 import {
   Image,
   StyleSheet,
-  Dimensions,
   Text,
   View,
-  FlatList,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 
 import logoyda from "./../../assets/images/logo-yda.png";
@@ -15,6 +15,10 @@ export default function Login(props) {
   console.log(props);
   return (
     <View style={styles.container}>
+      {/* <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      > */}
       <Image
         source={logoyda}
         style={styles.logo_yda}
@@ -22,8 +26,8 @@ export default function Login(props) {
         //style={{ position: "relative" }}
       />
       <Text style={styles.text}> Login </Text>
-
       <FormLogin navigation={props.navigation} />
+      {/* </KeyboardAvoidingView> */}
     </View>
   );
 }
