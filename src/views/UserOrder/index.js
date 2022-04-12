@@ -19,6 +19,16 @@ export default function UserOrder() {
   const route = useRoute();
   const user = route.params.user;
 
+  const createTwoButtonAlert = () =>
+    Alert.alert("Confirmation", "Je confirme la validation de cette commande", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "Valider", onPress: () => console.log("OK Pressed") },
+    ]);
+
   const renderItem = ({ item }) => <UserOdetailsItem item={item} />;
   return (
     <SafeAreaView style={styles.container}>
@@ -36,13 +46,13 @@ export default function UserOrder() {
           style={styles.button}
           title="En attente"
           color="#FF8C00"
-          onPress={() => Alert.alert("Commande mise en attente")}
+          onPress={() => "Commande mise en attente"}
         />
         <Button
           style={styles.button}
           title="Validé"
           color="#FFA500"
-          onPress={() => Alert.alert("Commande Validé")}
+          onPress={() => createTwoButtonAlert()}
         />
       </View>
       <FlatList
