@@ -28,6 +28,7 @@ export default function BottonRoutes() {
           tabBarInactiveTintColor: "#A9A9A9",
           tabBarActiveBackgroundColor: "#FFA500",
           tabBarActiveTintColor: "#FFA500",
+          headerShown: false,
         })}
       >
         <Tab.Screen name="Dashboard" component={OrderRoutes} />
