@@ -2,9 +2,8 @@ import React from "react";
 import { StyleSheet, SafeAreaView, FlatList } from "react-native";
 import useCompany from "../../hooks/useCompany";
 
-import CompanyItem from "../../components/Orders/CompanyItem";
-import Header from "../../components/Header";
-import { useNavigation } from "@react-navigation/native";
+import HomeCompanyItem from "../../components/Orders/HomeCompanyItem";
+import Header from "../../components/HeaderWelcome";
 
 export default function DashAdmin(props) {
   console.log("les props de DashAdmin");
@@ -14,11 +13,7 @@ export default function DashAdmin(props) {
   console.log("les DATA by useEntreprises in DashAdmin");
   console.log(DATA);
 
-  const navigation = useNavigation();
-
-  const renderItem = ({ item }) => (
-    <CompanyItem item={item} navigation={props.navigation} />
-  );
+  const renderItem = ({ item }) => <HomeCompanyItem item={item} />;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,7 +22,7 @@ export default function DashAdmin(props) {
         style={{
           position: "absolute",
           marginTop: "50%",
-          width: "95%",
+          width: "100%",
           //marginHorizontal: "2%",
         }}
         data={DATA}

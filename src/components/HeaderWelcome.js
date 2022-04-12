@@ -3,22 +3,13 @@ import { View, Text, Image, StyleSheet } from "react-native";
 
 import logo from "./../assets/images/logo.png";
 
-class Header extends React.Component {
+class HeaderWelcome extends React.Component {
   state = {
     topo: {
       boasVindas: "Salut Moenah",
       legenda: "Actualisez le status des commandes clients",
     },
   };
-
-  //   atualizaTopo() {
-  //     const retorno = carregaTopo();
-  //     this.setState({ topo: retorno });
-  //   }
-
-  //   componentDidMount() {
-  //     this.atualizaTopo();
-  //   }
 
   render() {
     return (
@@ -54,4 +45,4 @@ const estilos = StyleSheet.create({
   },
 });
 
-export default Header;
+export default HeaderWelcome;

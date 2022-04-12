@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -10,26 +10,24 @@ import {
 } from "react-native";
 //import { executeNativeBackPress } from "react-native-screens";
 import useCustomersByCompany from "../../hooks/useCustomersByCompany";
-import UserItem from "../../components/Orders/UserItem";
+import FirmUserItem from "../../components/Orders/FirmUserItem";
 import cciLogo from "./../../assets/images/cci-logo.png";
 import { useRoute } from "@react-navigation/native";
 
-export default function OrderByEntreprise(props) {
-  //const route = useRoute();
-  const detailCompany = props.route.params.detailCompany;
-  console.log("OrderByEntreprise return useCustomersByCompany () => ");
+export default function Firm() {
+  const route = useRoute();
+
+  const detailCompany = route.params.detailCompany;
 
   const customOrders = useCustomersByCompany(detailCompany.id);
-  console.log(customOrders);
   const [visible, setVisible] = useState(false);
 
   const changeVisible = () => {
     setVisible(!visible);
   };
 
-  const renderItem = ({ item }) => (
-    <UserItem item={item} navigation={props.navigation} />
-  );
+  const renderItem = ({ item }) => <FirmUserItem item={item} />;
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.infoCompany} onPress={changeVisible}>
@@ -48,9 +46,10 @@ export default function OrderByEntreprise(props) {
         style={{
           position: "absolute",
           marginTop: "35%",
-          width: "95%",
+          width: "100%",
           //marginHorizontal: "2%",
         }}
+        // ListHeaderComponent={HeaderList}
         data={customOrders}
         renderItem={renderItem}
         key={(item) => item.id}

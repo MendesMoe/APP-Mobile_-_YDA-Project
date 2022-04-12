@@ -34,7 +34,6 @@ export default function OdetailsItem(props) {
       <TouchableOpacity
         style={styles.cartao}
         onPress={() => {
-          // setIdCompany(props.item.id);
           props.navigation.navigate("OrderByUser");
         }}
       >
@@ -87,7 +86,6 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   informacoes: {
-    flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
     marginLeft: 8,
@@ -102,6 +100,6 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 16,
     lineHeight: 18,
-    fontWeight: "regular",
+    fontWeight: "normal",
   },
 });
