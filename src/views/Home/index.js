@@ -2,8 +2,9 @@ import React from "react";
 import { StyleSheet, SafeAreaView, FlatList } from "react-native";
 import useCompany from "../../hooks/useCompany";
 
-import HomeCompanyItem from "../../components/Orders/HomeCompanyItem";
+import HomeCompanyItem from "./HomeCompanyItem";
 import Header from "../../components/HeaderWelcome";
+import { styles } from "./style";
 
 export default function DashAdmin(props) {
   console.log("les props de DashAdmin");
@@ -19,12 +20,7 @@ export default function DashAdmin(props) {
     <SafeAreaView style={styles.container}>
       <Header />
       <FlatList
-        style={{
-          position: "absolute",
-          marginTop: "50%",
-          width: "100%",
-          //marginHorizontal: "2%",
-        }}
+        style={styles.list}
         data={DATA}
         renderItem={renderItem}
         key={(item) => item.id}
@@ -32,12 +28,3 @@ export default function DashAdmin(props) {
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flexDirection: "column",
-    backgroundColor: "#F6F6F6",
-
-    //justifyContent: "flex-start",
-  },
-});

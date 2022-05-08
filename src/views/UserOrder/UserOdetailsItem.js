@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import useProductByOdetail from "./../../hooks/useProductByOdetail";
+import useProductByOdetail from "../../hooks/useProductByOdetail";
 
 import prod_vin from "./../../assets/images/product_vin.png";
 

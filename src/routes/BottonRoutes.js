@@ -24,7 +24,7 @@ export default function BottonRoutes() {
             }
             return <AntDesign name={icon} size={24} color="black" />;
           },
-          tabBarInactiveBackgroundColor: "#A9A9A9",
+          tabBarInactiveBackgroundColor: "#EDEDED",
           tabBarInactiveTintColor: "#A9A9A9",
           tabBarActiveBackgroundColor: "#FFA500",
           tabBarActiveTintColor: "#FFA500",

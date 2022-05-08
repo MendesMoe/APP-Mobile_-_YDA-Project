@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useRoute } from "@react-navigation/native";
+import { AntDesign } from "@expo/vector-icons";
+
 import {
   Image,
   StyleSheet,
@@ -8,16 +11,20 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
+
 //import { executeNativeBackPress } from "react-native-screens";
 import useCustomersByCompany from "../../hooks/useCustomersByCompany";
-import FirmUserItem from "../../components/Orders/FirmUserItem";
+
+import FirmUserItem from "./FirmUserItem";
 import cciLogo from "./../../assets/images/cci-logo.png";
-import { useRoute } from "@react-navigation/native";
+import { styles } from "./style";
 
 export default function Firm() {
   const route = useRoute();
 
   const detailCompany = route.params.detailCompany;
+  console.log("detailCompany de FIRM");
+  console.log(detailCompany);
 
   const customOrders = useCustomersByCompany(detailCompany.id);
   const [visible, setVisible] = useState(false);
@@ -32,62 +39,31 @@ export default function Firm() {
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.infoCompany} onPress={changeVisible}>
         <Image source={cciLogo} style={styles.logo}></Image>
-        <Text> Empresa blabla</Text>
+        <Text style={styles.companyName}> {detailCompany.name}</Text>
       </TouchableOpacity>
       {visible && (
         <View style={styles.infos}>
-          <Text> Informacoes address </Text>
-          <Text> Informacoes phone </Text>
-          <Text> Informacoes email</Text>
+          <Text style={styles.infosCompany}>
+            {" "}
+            <AntDesign name={"phone"} size={16} color="black" />
+            {detailCompany.phone}{" "}
+          </Text>
+          <Text style={styles.infosCompany}>
+            {" "}
+            <AntDesign name={"mail"} size={16} color="black" />
+            {detailCompany.email}
+          </Text>
         </View>
       )}
 
       <FlatList
-        style={{
-          position: "absolute",
-          marginTop: "35%",
-          width: "100%",
-          //marginHorizontal: "2%",
-        }}
+        style={styles.list}
         // ListHeaderComponent={HeaderList}
         data={customOrders}
+        extraData={detailCompany}
         renderItem={renderItem}
         key={(item) => item.id}
       />
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flexDirection: "column",
-    position: "absolute",
-    marginTop: 40,
-    //justifyContent: "flex-start",
-  },
-  infoCompany: {
-    width: "100%",
-    flexDirection: "row",
-    position: "absolute",
-    alignItems: "center",
-    margin: 5,
-  },
-  infos: {
-    width: "90%",
-    position: "relative",
-    alignItems: "center",
-    top: 85,
-  },
-  logo: {
-    width: "29%",
-    height: 60,
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 18,
-    position: "absolute",
-    width: "99%",
-    textAlign: "center",
-    lineHeight: 20,
-  },
-});

@@ -1,37 +1,52 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import React, { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import logoCompany from "./../../assets/images/cci-logo.png";
 import { useNavigation } from "@react-navigation/native";
 
-import avatarUser from "./../../assets/images/avatar_icon.jpg";
-
-export default function UserItem(props) {
-  console.log("les props de UserItem");
-  console.log(props);
+export default function CompanyItem(props) {
   const navigation = useNavigation();
+
+  console.log("les props de CompanyItem");
+  console.log(props);
 
   return (
     <TouchableOpacity
       style={styles.cartao}
       onPress={() => {
-        navigation.navigate("UserOrder", {
-          user: props.item,
+        // setIdCompany(props.item.id);
+        navigation.navigate("Firms", {
+          detailCompany: props.item,
           //onPress={() => navigation.goBack()}
         });
       }}
     >
       <Image
-        source={avatarUser}
+        source={logoCompany}
         style={styles.imagem}
-        accessibilityLabel={props.item.lastname}
+        accessibilityLabel={props.item.name}
       />
       <View style={styles.informacoes}>
-        <Text style={styles.nome}> {props.item.firstname}</Text>
+        <Text style={styles.nome}> {props.item.name}</Text>
       </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  txt: {
+    fontSize: 20,
+    fontWeight: "bold",
+    lineHeight: 32,
+    marginHorizontal: 7,
+  },
+  txttime: {
+    fontSize: 15,
+    fontWeight: "bold",
+    lineHeight: 32,
+    marginHorizontal: 9,
+  },
+  ////////////
   cartao: {
     backgroundColor: "#F6F6F6",
     marginVertical: 8,
@@ -40,7 +55,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
 
     // Android
-    elevation: 4,
+    elevation: 3,
 
     // iOS
     shadowColor: "#000",
@@ -48,7 +63,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.23,
+    shadowOpacity: 0.11,
     shadowRadius: 2.62,
   },
   imagem: {
