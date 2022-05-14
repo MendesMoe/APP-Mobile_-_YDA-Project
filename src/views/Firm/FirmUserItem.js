@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import avatarUser from "./../../assets/images/avatar_icon.jpg";
 
-export default function UserItem(props) {
-  console.log("les props de UserItem - preciso das infos da firma");
-  console.log(props);
+export default function FirmUserItem(props) {
   const navigation = useNavigation();
+  const data = useRoute();
+  console.log("FirmUserItem tenho que ter user, order and orderdetail");
+  console.log(data);
 
   return (
     <TouchableOpacity
@@ -15,7 +16,6 @@ export default function UserItem(props) {
       onPress={() => {
         navigation.navigate("UserOrder", {
           user: props.item,
-          //onPress={() => navigation.goBack()}
         });
       }}
     >
@@ -30,6 +30,7 @@ export default function UserItem(props) {
     </TouchableOpacity>
   );
 }
+/*onPress={() => navigation.goBack()*/
 
 const styles = StyleSheet.create({
   cartao: {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getOrdersByFirmId } from "../services/api";
+import { getUsersWithOrdersByFirm } from "../services/api";
 
 export default function useCustomersByCompany(id) {
   const [customers, setCustomers] = useState();
@@ -7,11 +7,8 @@ export default function useCustomersByCompany(id) {
 
   /// Get Data by API
   useEffect(async () => {
-    const result = await getOrdersByFirmId(id);
-    setCustomers(result);
+    const result = await getUsersWithOrdersByFirm(id);
+    setCustomers(result["donnees"]);
   }, []);
-  //console.log("function useCustomersByCompany !!!!!888888 " + result);
-  console.log("customers ==== > ");
-  console.log(customers);
   return customers;
 }

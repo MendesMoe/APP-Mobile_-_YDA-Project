@@ -1,7 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View, TextInput, Button } from "react-native";
+import { connexion } from "../../../services/api";
 
 export default function FormLogin(props) {
+  const [username, setUsername] = useState("");
+  const [mdp, setMdp] = useState("");
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -10,6 +15,9 @@ export default function FormLogin(props) {
         placeholder=" Email"
         placeholderTextColor="#707070"
         autoCapitalize="none"
+        value={username}
+        onChangeText={(text) => setUsername(text)}
+        keyboardType="email-address"
       ></TextInput>
       <TextInput
         style={styles.input}
@@ -17,10 +25,16 @@ export default function FormLogin(props) {
         placeholder=" Password"
         placeholderTextColor="#707070"
         autoCapitalize="none"
+        value={mdp}
+        secureTextEntry
+        onChangeText={(text) => setMdp(text)}
       ></TextInput>
       <Button
         title="Connexion"
-        onPress={() => props.navigation.navigate("Login")}
+        onPress={() => {
+          connexion(username, mdp);
+          props.navigation.navigate("Dashboard");
+        }}
       />
       <Button
         title="Dashboard"

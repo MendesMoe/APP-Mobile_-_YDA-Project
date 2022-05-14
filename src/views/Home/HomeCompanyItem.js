@@ -7,9 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 export default function CompanyItem(props) {
   const navigation = useNavigation();
 
-  console.log("les props de CompanyItem");
-  console.log(props);
-
   return (
     <TouchableOpacity
       style={styles.cartao}

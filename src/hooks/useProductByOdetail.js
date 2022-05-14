@@ -11,7 +11,5 @@ export default function useProductByOdetail(id) {
     console.log(result);
     setProduct(result);
   }, []);
-  //   console.log("function useProductByOdetail");
-  //   console.log(product);
   return product;
 }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { callPhone } from "./../../components/Outils/CallPhoneFunction";
 
 import {
   Image,
-  StyleSheet,
   Text,
   SafeAreaView,
   FlatList,
@@ -23,10 +23,9 @@ export default function Firm() {
   const route = useRoute();
 
   const detailCompany = route.params.detailCompany;
-  console.log("detailCompany de FIRM");
-  console.log(detailCompany);
 
-  const customOrders = useCustomersByCompany(detailCompany.id);
+  const customWithOrders = useCustomersByCompany(detailCompany.id);
+
   const [visible, setVisible] = useState(false);
 
   const changeVisible = () => {
@@ -41,29 +40,38 @@ export default function Firm() {
         <Image source={cciLogo} style={styles.logo}></Image>
         <Text style={styles.companyName}> {detailCompany.name}</Text>
       </TouchableOpacity>
-      {visible && (
+      {visible ? (
         <View style={styles.infos}>
-          <Text style={styles.infosCompany}>
-            {" "}
-            <AntDesign name={"phone"} size={16} color="black" />
-            {detailCompany.phone}{" "}
-          </Text>
-          <Text style={styles.infosCompany}>
-            {" "}
-            <AntDesign name={"mail"} size={16} color="black" />
-            {detailCompany.email}
-          </Text>
+          <TouchableOpacity onPress={() => callPhone(detailCompany.phone)}>
+            <Text style={styles.infosCompany}>
+              <AntDesign name={"phone"} size={16} color="black" />{" "}
+              {detailCompany.phone}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => Linking.openURL(`mailto:${detailCompany.email}`)}
+          >
+            <Text style={styles.infosCompany}>
+              <AntDesign name={"mail"} size={16} color="black" />{" "}
+              {detailCompany.email}
+            </Text>
+          </TouchableOpacity>
         </View>
+      ) : (
+        <View style={styles.infos}></View>
       )}
 
       <FlatList
         style={styles.list}
-        // ListHeaderComponent={HeaderList}
-        data={customOrders}
+        data={customWithOrders}
         extraData={detailCompany}
         renderItem={renderItem}
         key={(item) => item.id}
       />
     </SafeAreaView>
   );
+  {
+    /* ListHeaderComponent={HeaderList} */
+  }
 }

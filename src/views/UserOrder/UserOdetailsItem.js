@@ -15,19 +15,6 @@ export default function OdetailsItem(props) {
   console.log(status_code);
   console.log(message);
   console.log(donnees);
-  //console.log(typeof product);
-  // const {
-  //   created_at,
-  //   description,
-  //   id,
-  //   image,
-  //   name,
-  //   price,
-  //   service_id,
-  //   status,
-  //   updated_at,
-  // } = donnees;
-  // console.log(created_at);
 
   if (donnees) {
     return (
@@ -40,7 +27,7 @@ export default function OdetailsItem(props) {
         <Image
           source={prod_vin}
           style={styles.imagem}
-          //accessibilityLabel={props.item.lastname}
+          /*accessibilityLabel={props.item.lastname}*/
         />
         <View style={styles.informacoes}>
           <Text style={styles.nome}> {donnees[0].name} </Text>

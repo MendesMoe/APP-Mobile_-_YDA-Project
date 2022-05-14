@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
   infosCompany: {
     fontSize: 12,
-    fontStyle: "bold",
+    fontWeight: "bold",
     fontSize: 16,
     marginVertical: 3,
   },
