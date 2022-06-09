@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, TextInput, Button, Alert } from "react-native";
 import { connexion } from "../../../services/api";
 
 export default function FormLogin(props) {
   const [username, setUsername] = useState("");
   const [mdp, setMdp] = useState("");
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -33,7 +35,11 @@ export default function FormLogin(props) {
         title="Connexion"
         onPress={() => {
           connexion(username, mdp);
-          props.navigation.navigate("Dashboard");
+          if (connexion == true) {
+            navigation.navigate("Dashboard");
+          } else {
+            Alert.alert("Identifiants incorrects");
+          }
         }}
       />
       <Button

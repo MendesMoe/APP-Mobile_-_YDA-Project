@@ -80,7 +80,7 @@ export const connexion = async (username, mdp) => {
   console.log(options.body);
   if (data.status_code == 200) {
     login(data.access_token);
-    console.log("data.access_token async storage ok");
+    console.log("data.access_token async storage ok" + data.access_token);
     return true;
   } else {
     console.log("pas de status 200, reponse loginUser");
