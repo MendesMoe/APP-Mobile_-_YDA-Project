@@ -4,62 +4,47 @@ export const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "column",
-    backgroundColor: "#fafafa",
-    alignItems: "center",
-  },
-  imagemArea: {
-    alignItems: "center",
     justifyContent: "center",
-    width: 130,
-    height: 130,
-    borderRadius: 55,
-    marginTop: -60,
+    alignItems: "center",
     backgroundColor: "#FFF",
   },
+  avatarArea: {
+    width: 119,
+    height: 119,
+    borderRadius: 55,
+    marginTop: -50,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+  },
+  center: {
+    alignItems: "center",
+  },
   imagem: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 110,
+    height: 110,
+    borderRadius: 58,
   },
   fundo: {
-    backgroundColor: "#C4C4C4",
+    backgroundColor: "#FFA500",
     width: "100%",
-    height: 90,
+    height: 60,
   },
   textoNome: {
     fontSize: 21,
     fontWeight: "600",
     color: "#45565F",
-    padding: 11,
+    padding: 9,
   },
-  textoEmail: {
+  phone: {
     fontSize: 17,
     color: "#717E84",
     marginTop: 3,
   },
-  buttons: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 6,
+  onPress: {
+    marginVertical: 3,
   },
-  botao: {
-    backgroundColor: "#FFA500",
-    marginTop: 2,
-    padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 8,
-    width: "45%",
-  },
-  textoBotao: {
-    fontWeight: "bold",
-    fontSize: 16,
-    color: "#fff",
-  },
+
   list: {
-    position: "absolute",
-    marginTop: "75%",
     width: "100%",
   },
 });

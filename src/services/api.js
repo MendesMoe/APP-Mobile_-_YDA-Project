@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const addressPublic = "172.20.10.4";
+const addressPublic = "172.20.10.5";
 const addressPrive = "127.0.0.1:8000";
 
 const reseau = addressPrive;
@@ -60,34 +60,4 @@ export const getProductId = async (id) => {
   };
   console.log("function getProductId");
   return await fetch(url, options).then((response) => response.json());
-};
-
-export const connexion = async (username, mdp) => {
-  const url = "http://" + reseau + "/api/connexion";
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      email: username,
-      password: mdp,
-    }),
-  };
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(options.body);
-  if (data.status_code == 200) {
-    login(data.access_token);
-    console.log("data.access_token async storage ok" + data.access_token);
-    return true;
-  } else {
-    console.log("pas de status 200, reponse loginUser");
-    return false;
-  }
-};
-
-const login = async (token) => {
-  await AsyncStorage.setItem("token_yda", JSON.stringify(token));
 };

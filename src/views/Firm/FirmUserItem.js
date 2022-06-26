@@ -7,14 +7,15 @@ import avatarUser from "./../../assets/images/avatar_icon.jpg";
 export default function FirmUserItem(props) {
   const navigation = useNavigation();
   const data = useRoute();
-  console.log("FirmUserItem tenho que ter user, order and orderdetail");
+  console.log("FirmUserItem + data de useRoute");
   console.log(data);
+  //console.log(props);
 
   return (
     <TouchableOpacity
       style={styles.cartao}
       onPress={() => {
-        navigation.navigate("UserOrder", {
+        navigation.navigate("Commandes", {
           user: props.item,
         });
       }}

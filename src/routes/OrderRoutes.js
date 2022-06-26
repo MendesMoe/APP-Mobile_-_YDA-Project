@@ -10,9 +10,29 @@ const Stack = createNativeStackNavigator();
 export default function OrderRoutes() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Firms" component={Firm} />
-      <Stack.Screen name="UserOrder" component={UserOrder} />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        screenOptions={{
+          cardStyle: { backgroundColor: "#FFF" },
+        }}
+        name="Home"
+        component={Home}
+      />
+      <Stack.Screen
+        options={{ headerShown: true }}
+        screenOptions={{
+          contentStyle: {
+            backgroundColor: "#FFFFFF",
+          },
+        }}
+        name="Entreprises"
+        component={Firm}
+      />
+      <Stack.Screen
+        options={{ headerShown: true }}
+        name="Commandes"
+        component={UserOrder}
+      />
     </Stack.Navigator>
   );
 }

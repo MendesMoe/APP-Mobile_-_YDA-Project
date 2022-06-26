@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import logoCompany from "./../../assets/images/cci-logo.png";
@@ -11,8 +11,7 @@ export default function CompanyItem(props) {
     <TouchableOpacity
       style={styles.cartao}
       onPress={() => {
-        // setIdCompany(props.item.id);
-        navigation.navigate("Firms", {
+        navigation.navigate("Entreprises", {
           detailCompany: props.item,
           //onPress={() => navigation.goBack()}
         });

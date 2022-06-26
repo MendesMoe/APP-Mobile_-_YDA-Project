@@ -8,6 +8,7 @@ export default function useCustomersByCompany(id) {
   /// Get Data by API
   useEffect(async () => {
     const result = await getUsersWithOrdersByFirm(id);
+    console.log(result);
     setCustomers(result["donnees"]);
   }, []);
   return customers;

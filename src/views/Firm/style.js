@@ -1,27 +1,58 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
+  containerFirm: {
     width: "100%",
     flexDirection: "column",
-    position: "absolute",
-    marginTop: 2,
-    //justifyContent: "flex-start",
+    backgroundColor: "#FFFFFF",
+    flex: 1,
+  },
+  center: {
+    alignItems: "center",
+  },
+  header: {
+    flexDirection: "row",
+    margin: 5,
+    justifyContent: "center",
+  },
+  imagem: {
+    width: 109,
+    height: 109,
+    borderRadius: 55,
+  },
+  firmName: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  infoPage: {
+    color: "#717E84",
+    fontSize: 14,
+    margin: 5,
+  },
+
+  visiblePress: {},
+  list: {
+    backgroundColor: "#FFFFFF",
+    width: "100%",
+  },
+  onPress: {
+    marginBottom: 1,
+    textAlign: "center",
+    justifyContent: "center",
   },
   infoCompany: {
     width: "100%",
     flexDirection: "row",
-    position: "absolute",
     alignItems: "center",
+    backgroundColor: "#FFF",
     margin: 11,
   },
   infos: {
     width: "100%",
+    backgroundColor: "#FFA500",
     flexDirection: "column",
-    position: "relative",
     alignItems: "center",
     justifyContent: "center",
-    top: 76,
     marginVertical: 3,
   },
   infosCompany: {
@@ -31,14 +62,11 @@ export const styles = StyleSheet.create({
     marginVertical: 3,
   },
   logo: {
-    width: "15%",
-    height: 50,
+    width: "20%",
+    height: 70,
+    borderRadius: 20,
   },
-  companyName: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginHorizontal: 5,
-  },
+
   title: {
     fontSize: 18,
     position: "absolute",
@@ -46,9 +74,23 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 20,
   },
-  list: {
-    position: "absolute",
-    marginTop: "35%",
+  fundo: {
+    backgroundColor: "#FFA500",
     width: "100%",
+    height: 60,
+  },
+  avatarArea: {
+    width: 119,
+    height: 119,
+    borderRadius: 55,
+    marginTop: -50,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+  },
+  textoNome: {
+    fontSize: 21,
+    fontWeight: "600",
+    color: "#45565F",
+    padding: 9,
   },
 });

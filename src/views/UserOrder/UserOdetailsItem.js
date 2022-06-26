@@ -4,8 +4,8 @@ import useProductByOdetail from "../../hooks/useProductByOdetail";
 
 import prod_vin from "./../../assets/images/product_vin.png";
 
-export default function OdetailsItem(props) {
-  console.log("les props de OdetailsItem");
+export default function UserOdetailsItem(props) {
+  console.log("les props de UserOdetailsItem");
   console.log(props);
   const product_id = parseInt(props.item.product_id);
 
@@ -24,11 +24,7 @@ export default function OdetailsItem(props) {
           props.navigation.navigate("OrderByUser");
         }}
       >
-        <Image
-          source={prod_vin}
-          style={styles.imagem}
-          /*accessibilityLabel={props.item.lastname}*/
-        />
+        <Image source={prod_vin} style={styles.imagem} />
         <View style={styles.informacoes}>
           <Text style={styles.nome}> {donnees[0].name} </Text>
           <Text style={styles.description}> Prix : {donnees[0].price} </Text>
@@ -41,7 +37,7 @@ export default function OdetailsItem(props) {
       </TouchableOpacity>
     );
   } else {
-    return "";
+    return <Text> vide</Text>;
   }
 }
 
