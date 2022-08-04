@@ -8,6 +8,7 @@ import { styles } from "./style";
 
 export default function DashAdmin() {
   const DATA = useCompany();
+  console.log("INDEX HOME");
 
   const renderItem = ({ item }) => <HomeCompanyItem item={item} />;
 

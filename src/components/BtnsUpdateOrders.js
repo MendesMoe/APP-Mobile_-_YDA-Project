@@ -1,9 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import { React, useState } from "react";
 import { Text, View, Alert, TouchableOpacity, StyleSheet } from "react-native";
+import { useEffect } from "react/cjs/react.production.min";
+import { updateStatusOrder } from "./../services/api";
 
 export default function BtnsUpdateOrders({ orderId }) {
   console.log("ORDER ID ENVIADO PRA BOTOES");
   console.log(orderId);
+
+  const navigation = useNavigation();
+
+  const [status, setStatus] = useState();
 
   const createTwoButtonAlert = () => {
     Alert.alert("Confirmation", "Je confirme la validation de cette commande", [
@@ -16,23 +23,50 @@ export default function BtnsUpdateOrders({ orderId }) {
     ]);
   };
 
+  async function updateOrder(orderId, status) {
+    const result = await updateStatusOrder(orderId, status);
+    console.log("result de updateOrder");
+    console.log(orderId + " " + status);
+    console.log(result);
+
+    if (result === 200) {
+      Alert.alert("Commande modifié");
+      navigation.goBack();
+    }
+    Alert.alert("Error - Commande non modifié");
+    navigation.goBack();
+  }
+
   return (
-    <View style={styles.buttons}>
-      <TouchableOpacity
-        style={styles.botaoValider}
-        onPress={() => createTwoButtonAlert()}
-      >
-        <Text style={styles.textoBotao}> Préparer </Text>
-      </TouchableOpacity>
+    <>
+      <View style={styles.buttons}>
+        <Text>Création : </Text>
+        <Text>Total : </Text>
+        <Text>Commentaire : </Text>
+      </View>
+      <View style={styles.buttons}>
+        <TouchableOpacity
+          style={styles.botaoValider}
+          onPress={() => updateOrder(orderId, setStatus("en cours"))} // por que nao funciona o setStatus?
+        >
+          <Text style={styles.textoBotao}> Préparer </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.botaoFinaliser}>
-        <Text style={styles.textoBotao}> Livrée </Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.botaoAnuller}
+          onPress={() => updateOrder(orderId, "annule")}
+        >
+          <Text style={styles.textoBotao}> Annuler </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.botaoAnuller}>
-        <Text style={styles.textoBotao}> Annuler </Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          style={styles.botaoFinaliser}
+          onPress={() => updateOrder(orderId, "terminee")}
+        >
+          <Text style={styles.textoBotao}> Livrée </Text>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 }
 

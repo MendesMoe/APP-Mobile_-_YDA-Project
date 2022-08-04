@@ -1,38 +1,57 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import avatarUser from "./../../assets/images/avatar_icon.jpg";
 
 export default function FirmUserItem(props) {
   const navigation = useNavigation();
-  const data = useRoute();
-  console.log("FirmUserItem + data de useRoute");
-  console.log(data);
-  //console.log(props);
+  console.log("= les props de FirmUserItem props");
+  console.log(props);
+
+  const infosUser = {
+    image: props.item.avatar ? props.item.avatar : null,
+    email: props.item.email,
+    name: props.item.firstname + " " + props.item.lastname,
+    phone: props.item.phone,
+  };
+
+  let oneOrder;
+  let k;
+  if (Object.keys(props.item.orders).length < 2) {
+    oneOrder = true;
+    k = Object.keys(props.item.orders);
+  } else {
+    oneOrder = false;
+    k = [];
+    k.push(0);
+  }
+
+  // console.log("= oneOrder en FirmUserItem");
+  // console.log(oneOrder);
+
+  // console.log("Qual o resultado de props.item.orders[0]");
+  // console.log(props.item.orders[k[0]]);
 
   return (
     <TouchableOpacity
       style={styles.cartao}
       onPress={() => {
-        navigation.navigate("Commandes", {
-          user: props.item,
-        });
+        oneOrder
+          ? navigation.navigate("UserOdetails", {
+              item: props.item.orders[k[0]],
+              infosUser: infosUser,
+            })
+          : navigation.navigate("UserOrder", { user: props.item });
       }}
     >
-      <Image
-        source={avatarUser}
-        style={styles.imagem}
-        accessibilityLabel={props.item.lastname}
-      />
+      <Image source={avatarUser} style={styles.imagem} />
       <View style={styles.informacoes}>
         <Text style={styles.nome}> {props.item.firstname}</Text>
       </View>
     </TouchableOpacity>
   );
 }
-/*onPress={() => navigation.goBack()*/
-
 const styles = StyleSheet.create({
   cartao: {
     backgroundColor: "#F6F6F6",

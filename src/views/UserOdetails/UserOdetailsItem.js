@@ -7,9 +7,9 @@ import prod_vin from "./../../assets/images/product_vin.png";
 export default function UserOdetailsItem(props) {
   console.log("les props de UserOdetailsItem");
   console.log(props);
-  const product_id = parseInt(props.item.product_id);
+  let productId = parseInt(props.item.product_id);
 
-  const productResponse = useProductByOdetail(product_id);
+  const productResponse = useProductByOdetail(productId);
   const { status_code, message, donnees } = productResponse;
   console.log(productResponse);
   console.log(status_code);
@@ -18,12 +18,7 @@ export default function UserOdetailsItem(props) {
 
   if (donnees) {
     return (
-      <TouchableOpacity
-        style={styles.cartao}
-        onPress={() => {
-          props.navigation.navigate("OrderByUser");
-        }}
-      >
+      <TouchableOpacity style={styles.cartao} onPress={() => {}}>
         <Image source={prod_vin} style={styles.imagem} />
         <View style={styles.informacoes}>
           <Text style={styles.nome}> {donnees[0].name} </Text>

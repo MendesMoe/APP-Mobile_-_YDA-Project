@@ -12,14 +12,20 @@ import { styles } from "./style";
 export default function Firm() {
   const route = useRoute();
 
-  const infosFirm = route.params.detailCompany;
-  console.log(infosFirm);
+  const infosFirm = {
+    image: route.params.detailCompany.image,
+    email: route.params.detailCompany.email,
+    name: route.params.detailCompany.name,
+    phone: route.params.detailCompany.phone,
+  };
 
-  const customWithOrders = useCustomersByCompany(infosFirm.id);
-  console.log("Resultado de useCustomersByCompany : ");
+  const customWithOrders = useCustomersByCompany(route.params.detailCompany.id);
+  console.log("Firm - index - customWithOrders");
   console.log(customWithOrders);
 
-  const renderItem = ({ item }) => <FirmUserItem item={item} />;
+  const renderItem = ({ item }) => (
+    <FirmUserItem item={item} infosFirm={infosFirm} />
+  );
 
   return (
     <SafeAreaView style={styles.containerFirm}>
@@ -27,10 +33,9 @@ export default function Firm() {
       <FlatList
         style={styles.list}
         data={customWithOrders}
-        extraData={infosFirm}
         renderItem={renderItem}
         key={(item) => item.id}
-        ListHeaderComponent={() => <HeaderFirm infosFirm={infosFirm} />}
+        ListHeaderComponent={() => <HeaderFirm {...infosFirm} />}
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
       />

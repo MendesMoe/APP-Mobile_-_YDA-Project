@@ -6,7 +6,7 @@ import { callPhone } from "../../components/Outils/CallPhoneFunction";
 import cciLogo from "../../assets/images/logo_klm.png";
 import { styles } from "./style";
 
-export default function HeaderFirm({ infosFirm }) {
+export default function HeaderFirm({ image, email, name, phone }) {
   const [visible, setVisible] = useState(false);
 
   const changeVisible = () => {
@@ -24,7 +24,7 @@ export default function HeaderFirm({ infosFirm }) {
         />
       </View>
 
-      <Text style={styles.textoNome}> {infosFirm?.name}</Text>
+      <Text style={styles.textoNome}> {name}</Text>
 
       <TouchableOpacity style={styles.btnPlus} onPress={changeVisible}>
         <AntDesign name={"plus"} size={20} color="orange" />
@@ -34,21 +34,19 @@ export default function HeaderFirm({ infosFirm }) {
         <View style={styles.visiblePress}>
           <TouchableOpacity
             style={styles.onPress}
-            onPress={() => callPhone(infosFirm.phone)}
+            onPress={() => callPhone(phone)}
           >
             <Text style={styles.infosCompany}>
-              <AntDesign name={"phone"} size={20} color="black" />{" "}
-              {infosFirm.phone}
+              <AntDesign name={"phone"} size={20} color="black" /> {phone}
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.onPress}
-            onPress={() => Linking.openURL(`mailto:${infosFirm.email}`)}
+            onPress={() => Linking.openURL(`mailto:${email}`)}
           >
             <Text style={styles.infosCompany}>
-              <AntDesign name={"mail"} size={16} color="black" />{" "}
-              {infosFirm.email}
+              <AntDesign name={"mail"} size={16} color="black" /> {email}
             </Text>
           </TouchableOpacity>
         </View>

@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const addressPublic = "172.20.10.5";
-const addressPrive = "127.0.0.1:8000";
+const addressPrive = "127.0.0.1:8001";
 
 const reseau = addressPrive;
 
@@ -60,4 +60,29 @@ export const getProductId = async (id) => {
   };
   console.log("function getProductId");
   return await fetch(url, options).then((response) => response.json());
+};
+
+///////////////////// UPDATE STATUS ORDER //////////////////////////
+
+export const updateStatusOrder = async (orderId, newStatus) => {
+  const url = "http://" + reseau + "/api/order/changeStatus";
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      //Authorization: "Bearer " + localStorage.getItem("@token"),
+    },
+    body: JSON.stringify({
+      newStatus: newStatus,
+      id: orderId,
+    }),
+  };
+  try {
+    let res;
+    res = await fetch(url, options).then((response) => response.json());
+    return res.status_code;
+  } catch (error) {
+    console.log(error);
+    return "Error";
+  }
 };
