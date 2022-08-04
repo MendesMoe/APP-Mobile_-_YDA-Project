@@ -1,31 +1,26 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
+import {
+  SafeAreaView,
+  StatusBar,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { AuthProvider } from "./src/contexts/Auth";
 
-import Login from "./assets/views/connexion/Login";
-import DashAdmin from "./assets/views/dashboard/DashAdmin";
-import OrderByEntreprise from "./assets/views/details/OrderByEntreprise";
-
-const Stack = createNativeStackNavigator();
+import BottonRoutes from "./src/routes/BottonRoutes";
 
 export default function App() {
   return (
-    <NavigationContainer style={styles.container}>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Dashboard" component={DashAdmin} />
-        <Stack.Screen name="OrderByEntreprise" component={OrderByEntreprise} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
+      <StatusBar />
+      <AuthProvider>
+        <KeyboardAvoidingView
+          behavior={Platform.OS == "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
+        >
+          <BottonRoutes />
+        </KeyboardAvoidingView>
+      </AuthProvider>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
