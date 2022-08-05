@@ -38,7 +38,8 @@ export default function UserOdetailsItem(props) {
 
 const styles = StyleSheet.create({
   cartao: {
-    backgroundColor: "#F6F6F6",
+  
+    backgroundColor: "#FEFEFE",
     marginVertical: 8,
     marginHorizontal: 11,
     borderRadius: 6,

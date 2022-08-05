@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import avatarUser from "./../../assets/images/avatar_icon.jpg";
+import { styles } from "./style";
 
 export default function FirmUserItem(props) {
   const navigation = useNavigation();
@@ -16,10 +17,20 @@ export default function FirmUserItem(props) {
     phone: props.item.phone,
   };
 
+  const datas = props.item;
+  let infosOrder = null;
+
   let oneOrder;
   let k;
   if (Object.keys(props.item.orders).length < 2) {
     oneOrder = true;
+    infosOrder = {
+      date: datas.orders[0].created_at,
+      comment: datas.orders[0].comments,
+      status: datas.orders[0].status,
+      total: datas.orders[0].total,
+    };
+    console.log(infosOrder);
     k = Object.keys(props.item.orders);
   } else {
     oneOrder = false;
@@ -27,69 +38,25 @@ export default function FirmUserItem(props) {
     k.push(0);
   }
 
-  // console.log("= oneOrder en FirmUserItem");
-  // console.log(oneOrder);
-
-  // console.log("Qual o resultado de props.item.orders[0]");
-  // console.log(props.item.orders[k[0]]);
-
   return (
     <TouchableOpacity
-      style={styles.cartao}
+      style={styles.containerItem}
       onPress={() => {
         oneOrder
           ? navigation.navigate("UserOdetails", {
               item: props.item.orders[k[0]],
               infosUser: infosUser,
+              infosOrder: infosOrder,
             })
           : navigation.navigate("UserOrder", { user: props.item });
       }}
     >
-      <Image source={avatarUser} style={styles.imagem} />
-      <View style={styles.informacoes}>
-        <Text style={styles.nome}> {props.item.firstname}</Text>
+      <View style={styles.personItem}>
+      <Image source={avatarUser} style={styles.imageItem} />
+      <View style={styles.informationsItem}>
+        <Text style={styles.nameItem}> {props.item.firstname}</Text>
+      </View>
       </View>
     </TouchableOpacity>
   );
 }
-const styles = StyleSheet.create({
-  cartao: {
-    backgroundColor: "#F6F6F6",
-    marginVertical: 8,
-    marginHorizontal: 11,
-    borderRadius: 5,
-    flexDirection: "row",
-
-    // Android
-    elevation: 3,
-
-    // iOS
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.11,
-    shadowRadius: 1.62,
-  },
-  imagem: {
-    width: 48,
-    height: 48,
-    borderRadius: 6,
-    marginVertical: 16,
-    marginLeft: 16,
-  },
-  informacoes: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginLeft: 8,
-    marginVertical: 16,
-    marginRight: 18,
-  },
-  nome: {
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: "bold",
-  },
-});

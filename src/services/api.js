@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const addressPublic = "172.20.10.5";
-const addressPrive = "127.0.0.1:8001";
+const addressPublic = "172.20.10.5:8000";
+const addressPrive = "127.0.0.1:8000";
 
 const reseau = addressPrive;
 
