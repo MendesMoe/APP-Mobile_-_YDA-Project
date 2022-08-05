@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import moment from "moment";
 
@@ -8,6 +8,16 @@ export default function UserOrdersItem(props) {
   console.log("props de UserOrdersItem");
   console.log(props);
   const navigation = useNavigation();
+  const route = useRoute();
+  console.log("useroute em user orders item");
+  console.log(route);
+
+  const infosOrder = {
+    date: props.item.created_at,
+    comment: props.item.comments,
+    status: props.item.status,
+    total: props.item.total,
+  };
 
   return (
     <TouchableOpacity
@@ -16,6 +26,7 @@ export default function UserOrdersItem(props) {
         navigation.navigate("UserOdetails", {
           infosUser: props.infosUser,
           item: props.item,
+          infosOrder: infosOrder,
         });
       }}
     >
@@ -41,7 +52,7 @@ export default function UserOrdersItem(props) {
 
 const styles = StyleSheet.create({
   cartao: {
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "#FEFEFE",
     marginVertical: 8,
     marginHorizontal: 11,
     borderRadius: 6,

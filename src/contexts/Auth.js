@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({});
   const [login, setLogin] = useState(false);
 
-  const addressPublic = "172.20.10.5";
+  const addressPublic = "172.20.10.5:8000";
   const addressPrive = "127.0.0.1:8000";
   const reseau = addressPrive;
 
@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
       body: JSON.stringify({
         email: username,

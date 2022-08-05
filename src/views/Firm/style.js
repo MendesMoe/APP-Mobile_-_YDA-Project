@@ -33,12 +33,12 @@ export const styles = StyleSheet.create({
   visiblePress: {},
   list: {
     backgroundColor: "#FFFFFF",
-    width: "100%",
+    width: "99%",
+    marginRight:10
   },
+  
   onPress: {
-    marginBottom: 1,
-    textAlign: "center",
-    justifyContent: "center",
+    marginVertical: 3,
   },
   infoCompany: {
     width: "100%",
@@ -92,5 +92,54 @@ export const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#45565F",
     padding: 9,
+  },
+  containerItem: {
+    width: "100%",
+    height: 90,
+    backgroundColor: "#FEFEFE",
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    marginVertical: 6,
+    marginHorizontal: 6,
+    paddingHorizontal: 4,
+    // Android
+    elevation: 3,
+
+    // iOS
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.11,
+    shadowRadius: 2.62,
+  },
+  personItem: {
+    width: "100%",
+    height: 60,
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+  },
+  imageItem :{
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+  },
+  informationsItem: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginLeft: 8,
+    marginVertical: 16,
+    marginRight: 18,
+  },
+  nameItem: {
+    fontSize: 22,
+    fontFamily: "Roboto",
+    fontWeight: "700",
+    color: "#464646",
   },
 });

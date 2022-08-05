@@ -1,85 +1,35 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Icon from 'react-native-vector-icons/Feather';
+import { styles } from "./style";
+
 
 import logoCompany from "./../../assets/images/cci-logo.png";
 import { useNavigation } from "@react-navigation/native";
 
 export default function CompanyItem(props) {
   const navigation = useNavigation();
+  const data = props.item;
 
   return (
-    <TouchableOpacity
-      style={styles.cartao}
-      onPress={() => {
-        navigation.navigate("Entreprises", {
-          detailCompany: props.item,
-          //onPress={() => navigation.goBack()}
-        });
-      }}
-    >
-      <Image
-        source={logoCompany}
-        style={styles.imagem}
-        accessibilityLabel={props.item.name}
-      />
-      <View style={styles.informacoes}>
-        <Text style={styles.nome}> {props.item.name}</Text>
+    <TouchableOpacity style={styles.container}
+    onPress={() => {
+      navigation.navigate("Entreprises", {
+        detailCompany: data,
+      });
+    }}>
+      <View style={styles.person}>
+        <Image source={logoCompany} style={styles.logo} />
+        <View style={styles.informations}>
+          <Text style={styles.name}>{data.name}</Text>
+          <View style={styles.calendar}>
+            <Icon name={"calendar"} size={16} color="#A3A3A3" />
+            <Text style={styles.infoCalendar}> {data.visit_day_1} {data.time_1}h, {data.visit_day_2} {data.time_2}h </Text>
+          </View>
+        </View>
       </View>
     </TouchableOpacity>
   );
+
 }
 
-const styles = StyleSheet.create({
-  txt: {
-    fontSize: 20,
-    fontWeight: "bold",
-    lineHeight: 32,
-    marginHorizontal: 7,
-  },
-  txttime: {
-    fontSize: 15,
-    fontWeight: "bold",
-    lineHeight: 32,
-    marginHorizontal: 9,
-  },
-  ////////////
-  cartao: {
-    backgroundColor: "#F6F6F6",
-    marginVertical: 8,
-    marginHorizontal: 11,
-    borderRadius: 6,
-    flexDirection: "row",
-
-    // Android
-    elevation: 3,
-
-    // iOS
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.11,
-    shadowRadius: 2.62,
-  },
-  imagem: {
-    width: 48,
-    height: 48,
-    borderRadius: 6,
-    marginVertical: 16,
-    marginLeft: 16,
-  },
-  informacoes: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginLeft: 8,
-    marginVertical: 16,
-    marginRight: 18,
-  },
-  nome: {
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: "bold",
-  },
-});

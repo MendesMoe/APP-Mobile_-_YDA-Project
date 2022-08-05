@@ -12,11 +12,9 @@ export default function UserOdetails(props) {
   const route = useRoute();
   const data = route.params;
   console.log(
-    "route.params (data) de UserOdetails index chamado para somente 1 order"
+    "route.params (data) de UserOdetails index chamado para somente 1 order / agora com infosOrder"
   );
   console.log(data);
-  console.log("props de UserOdetails");
-  console.log(props);
 
   const renderItem = ({ item }) => <UserOdetailsItem item={item} />;
 
@@ -29,7 +27,9 @@ export default function UserOdetails(props) {
         renderItem={renderItem}
         key={(item) => item.id}
         ListHeaderComponent={() => <HeaderUser {...data.infosUser} />}
-        ListFooterComponent={() => <BtnsUpdateOrders orderId={data.item.id} />}
+        ListFooterComponent={() => (
+          <BtnsUpdateOrders orderId={data.item.id} order={data.infosOrder} />
+        )}
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
       />
