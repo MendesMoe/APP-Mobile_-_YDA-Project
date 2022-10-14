@@ -30,6 +30,12 @@ export default function UserOdetails(props) {
         ListFooterComponent={() => (
           <BtnsUpdateOrders orderId={data.item.id} order={data.infosOrder} />
         )}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListFooterComponentStyle={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+        }}
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
       />

@@ -36,8 +36,8 @@ export default function HeaderFirm({ image, email, name, phone }) {
             style={styles.onPress}
             onPress={() => callPhone(phone)}
           >
-            <Text style={styles.phone}>
-              <AntDesign name={"phone"} size={20} color="black" /> {phone}
+            <Text style={styles.infosVisible}>
+              <AntDesign name={"phone"} size={16} color="black" /> {phone}
             </Text>
           </TouchableOpacity>
 
@@ -45,7 +45,7 @@ export default function HeaderFirm({ image, email, name, phone }) {
             style={styles.onPress}
             onPress={() => Linking.openURL(`mailto:${email}`)}
           >
-            <Text style={styles.phone}>
+            <Text style={styles.infosVisible}>
               <AntDesign name={"mail"} size={16} color="black" /> {email}
             </Text>
           </TouchableOpacity>

@@ -37,6 +37,8 @@ export default function UserOrder(props) {
         renderItem={renderItem}
         key={(item) => item.id}
         ListHeaderComponent={() => <HeaderUser {...infosUser} />}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListFooterComponentStyle={{ flex: 1, justifyContent: "flex-end" }}
         showsVerticalScrollIndicator={false}
         // stickyHeaderIndices={[0]}
       />

@@ -15,6 +15,11 @@ export const styles = StyleSheet.create({
     margin: 5,
     justifyContent: "center",
   },
+  infosVisible: {
+    fontSize: 17,
+    color: "#717E84",
+    marginTop: 3,
+  },
   imagem: {
     width: 109,
     height: 109,
@@ -30,13 +35,16 @@ export const styles = StyleSheet.create({
     margin: 5,
   },
 
-  visiblePress: {},
+  visiblePress: {
+    alignItems: "center",
+  },
+
   list: {
     backgroundColor: "#FFFFFF",
     width: "99%",
-    marginRight:10
+    marginRight: 10,
   },
-  
+
   onPress: {
     marginVertical: 3,
   },
@@ -123,7 +131,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "flex-start",
   },
-  imageItem :{
+  imageItem: {
     width: 36,
     height: 36,
     borderRadius: 18,

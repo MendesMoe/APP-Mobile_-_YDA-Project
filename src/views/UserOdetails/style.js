@@ -1,4 +1,9 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+
+export const { height } = Dimensions.get("window");
+console.log("heeeeiiiigghhhhtttt");
+console.log(height);
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,6 +12,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFF",
+    flex: 1,
   },
   avatarArea: {
     width: 119,
@@ -46,5 +52,6 @@ export const styles = StyleSheet.create({
 
   list: {
     width: "100%",
+    height: height,
   },
 });
