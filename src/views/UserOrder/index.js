@@ -17,13 +17,6 @@ export default function UserOrder(props) {
     phone: user.phone,
   };
 
-  // console.log("infosUser dns UserOrder");
-  // console.log(infosUser);
-
-  // console.log("Object values de user.order");
-  // console.log(Object.values(user.orders));
-
-  //Si l'utilisateur a passé seulement une commande, il appele directement le UserOdetails
   const renderItem = ({ item }) => (
     <UserOrdersItem item={item} infosUser={infosUser} />
   );

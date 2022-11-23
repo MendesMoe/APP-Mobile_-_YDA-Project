@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { React, useState } from "react";
 import { Text, View, Alert, TouchableOpacity, StyleSheet } from "react-native";
-import { useEffect } from "react/cjs/react.production.min";
 import { updateStatusOrder } from "./../services/api";
 import moment from "moment";
 
@@ -44,28 +43,24 @@ export default function BtnsUpdateOrders({ orderId, order }) {
   return (
     <>
       <View style={styles.infos}>
-
         <View style={styles.infoItem}>
           <Text style={styles.infoKey}>Création : </Text>
           <Text style={styles.infoDate}>{moment(order.date).calendar()}</Text>
         </View>
 
-        { order.comment ?
-
-        <View style={styles.infoItem}>
-          <Text style={styles.infoKey}>Commentaire : </Text>
-          <Text style={styles.infoDate}>{order.comment}</Text>
-        </View>
-        :
-        ""
-
-        }
+        {order.comment ? (
+          <View style={styles.infoItem}>
+            <Text style={styles.infoKey}>Commentaire : </Text>
+            <Text style={styles.infoDate}>{order.comment}</Text>
+          </View>
+        ) : (
+          ""
+        )}
 
         <View style={styles.infoItem}>
           <Text style={styles.infoKey}>Total :</Text>
           <Text style={styles.infoTotal}>R$ {order.total}</Text>
         </View>
-    
       </View>
 
       <View style={styles.buttons}>
@@ -142,12 +137,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#fff",
   },
-  infoDate :{
+  infoDate: {
     fontWeight: "bold",
     fontSize: 14,
     lineHeight: 16,
   },
-  infoTotal : {
+  infoTotal: {
     fontWeight: "bold",
     fontSize: 16,
     color: "#FF0000",
@@ -159,16 +154,16 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
   },
   infos: {
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexDirection: "column",
+    alignItems: "center",
     padding: 10,
   },
-  infoItem : {
+  infoItem: {
     padding: 3,
-    width:"100%",
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  }
+    width: "100%",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+  },
 });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from "react";
+import React, { useEffect, useState } from "react";
 
 import { SafeAreaView, FlatList, StatusBar } from "react-native";
 import { useRoute } from "@react-navigation/native";
@@ -14,12 +14,13 @@ import { styles } from "./style";
 export default function Firm() {
   const route = useRoute();
   const [time, setTime] = useState(false);
+  console.log("FIRM index");
 
-  useEffect( async () => {
+  useEffect(async () => {
     setTimeout(() => {
       setTime(true);
     }, 1000);
-  },[])
+  }, []);
 
   const infosFirm = {
     image: route.params.detailCompany.image,
@@ -32,33 +33,30 @@ export default function Firm() {
   console.log("Firm - index - customWithOrders");
   console.log(customWithOrders);
 
-  const renderItem = ({ item }) => (
-    <FirmUserItem item={item} infosFirm={infosFirm} />
-  );
+  const renderItem = ({ item }) => <FirmUserItem item={item} />;
 
   return (
     <SafeAreaView style={styles.containerFirm}>
       <StatusBar />
-      
-      { time ?
-      <FlatList
-      style={styles.list}
-      data={customWithOrders}
-      renderItem={renderItem}
-      key={(item) => item.id}
-      ListHeaderComponent={() => <HeaderFirm {...infosFirm} />}
-      showsVerticalScrollIndicator={false}
-      stickyHeaderIndices={[0]}
-    />
-    :
-    <>
-      <HeaderFirmShimmerEffect/>
-      <FirmUserItemShimmerEffect/>
-      <FirmUserItemShimmerEffect/>
-      <FirmUserItemShimmerEffect/>
-    </>
-    }
-      
+
+      {time ? (
+        <FlatList
+          style={styles.list}
+          data={customWithOrders}
+          renderItem={renderItem}
+          key={(item) => item.id}
+          ListHeaderComponent={() => <HeaderFirm {...infosFirm} />}
+          showsVerticalScrollIndicator={false}
+          stickyHeaderIndices={[0]}
+        />
+      ) : (
+        <>
+          <HeaderFirmShimmerEffect />
+          <FirmUserItemShimmerEffect />
+          <FirmUserItemShimmerEffect />
+          <FirmUserItemShimmerEffect />
+        </>
+      )}
     </SafeAreaView>
   );
 }

@@ -5,33 +5,40 @@ import { useNavigation } from "@react-navigation/native";
 import avatarUser from "./../../assets/images/avatar_icon.jpg";
 import { styles } from "./style";
 
+function hasOneOrder({ ordersArray }) {}
+
 export default function FirmUserItem(props) {
   const navigation = useNavigation();
   console.log("= les props de FirmUserItem props");
   console.log(props);
 
+  const data = props.item;
+
   const infosUser = {
-    image: props.item.avatar ? props.item.avatar : null,
-    email: props.item.email,
-    name: props.item.firstname + " " + props.item.lastname,
-    phone: props.item.phone,
+    image: data.avatar ? props.item.avatar : null,
+    email: data.email,
+    name: data.firstname + " " + props.item.lastname,
+    phone: data.phone,
   };
 
-  const datas = props.item;
+  const orders = data.orders;
+
   let infosOrder = null;
 
   let oneOrder;
   let k;
-  if (Object.keys(props.item.orders).length < 2) {
+  if (Object.keys(orders).length < 2) {
     oneOrder = true;
+    const onlyOrder = Object.values(orders);
+
     infosOrder = {
-      date: datas.orders[0].created_at,
-      comment: datas.orders[0].comments,
-      status: datas.orders[0].status,
-      total: datas.orders[0].total,
+      date: onlyOrder[0].created_at,
+      comment: onlyOrder[0].comments,
+      status: onlyOrder[0].status,
+      total: onlyOrder[0].total,
     };
-    console.log(infosOrder);
-    k = Object.keys(props.item.orders);
+
+    k = Object.keys(orders);
   } else {
     oneOrder = false;
     k = [];
@@ -52,10 +59,10 @@ export default function FirmUserItem(props) {
       }}
     >
       <View style={styles.personItem}>
-      <Image source={avatarUser} style={styles.imageItem} />
-      <View style={styles.informationsItem}>
-        <Text style={styles.nameItem}> {props.item.firstname}</Text>
-      </View>
+        <Image source={avatarUser} style={styles.imageItem} />
+        <View style={styles.informationsItem}>
+          <Text style={styles.nameItem}> {props.item.firstname}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );

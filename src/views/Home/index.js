@@ -9,6 +9,7 @@ import { styles } from "./style";
 export default function DashAdmin() {
   const DATA = useCompany();
   console.log("INDEX HOME");
+  console.log(DATA[0]);
 
   const renderItem = ({ item }) => <HomeCompanyItem item={item} />;
 
@@ -17,7 +18,7 @@ export default function DashAdmin() {
       <StatusBar />
       <FlatList
         style={styles.list}
-        data={DATA}
+        data={DATA[0]}
         renderItem={renderItem}
         key={(item) => item.id}
         ListHeaderComponent={() => <HeaderAuth />}
