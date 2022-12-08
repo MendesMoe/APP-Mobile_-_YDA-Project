@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container2: {
-    width: "100%",
+    flex: 1,
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#000",
@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   },
   container3: {
     backgroundColor: "#000",
-    height: "100%",
   },
   label: {
     color: "#FFFFFF",

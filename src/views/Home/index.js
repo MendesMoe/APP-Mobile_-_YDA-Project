@@ -11,6 +11,8 @@ export default function DashAdmin() {
   console.log("INDEX HOME");
   console.log(DATA[0]);
 
+  const test = [...DATA[0], ...DATA[0]];
+
   const renderItem = ({ item }) => <HomeCompanyItem item={item} />;
 
   return (
@@ -18,7 +20,7 @@ export default function DashAdmin() {
       <StatusBar />
       <FlatList
         style={styles.list}
-        data={DATA[0]}
+        data={test}
         renderItem={renderItem}
         key={(item) => item.id}
         ListHeaderComponent={() => <HeaderAuth />}
