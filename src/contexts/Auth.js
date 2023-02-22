@@ -5,14 +5,12 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({});
-  const [login, setLogin] = useState(false);
-
-  const addressPublic = "172.20.10.5:8000";
+  const [login, setLogin] = useState(false); //const addressPublic = "172.20.10.5:8000";
   const addressPrive = "127.0.0.1:8000";
   const reseau = addressPrive;
 
   async function connexion(username, mdp) {
-    const url = "http://" + reseau + "/api/connexion";
+    const url = "http://" + reseau + "/api/login";
     const options = {
       method: "POST",
       headers: {
@@ -24,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       }),
     };
     const response = await fetch(url, options).then((res) => res.json());
-    console.log(response.access_token);
+
     if (response.status_code == 200) {
       saveTokenStorage(response.access_token);
       console.log("function login ok" + response.access_token);

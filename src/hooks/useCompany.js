@@ -7,7 +7,7 @@ export default function useEntreprises() {
 
   useEffect(async () => {
     const result = await getFirmsWithUsersAndOrders();
-    console.log(result);
+    console.log("use company()");
     setEntreprises(result);
   }, []);
   console.log("function useEntreprise");

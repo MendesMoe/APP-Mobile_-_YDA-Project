@@ -6,7 +6,7 @@ const addressPrive = "127.0.0.1:8000";
 const reseau = addressPrive;
 
 export const getUsersWithOrdersByFirm = (id) => {
-  const url = "http://" + reseau + "/api/getUsersWithOrdersByFirm/" + id;
+  const url = "http://" + reseau + "/api/getCustomersByCompany/" + id;
   const options = {
     method: "GET",
     headers: {

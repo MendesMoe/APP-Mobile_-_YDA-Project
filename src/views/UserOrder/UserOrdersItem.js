@@ -23,7 +23,7 @@ export default function UserOrdersItem(props) {
     <TouchableOpacity
       style={styles.cartao}
       onPress={() => {
-        navigation.navigate("UserOdetails", {
+        navigation.navigate("Commande", {
           infosUser: props.infosUser,
           item: props.item,
           infosOrder: infosOrder,

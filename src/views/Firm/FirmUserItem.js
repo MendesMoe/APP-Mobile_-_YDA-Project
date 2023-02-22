@@ -50,12 +50,12 @@ export default function FirmUserItem(props) {
       style={styles.containerItem}
       onPress={() => {
         oneOrder
-          ? navigation.navigate("UserOdetails", {
+          ? navigation.navigate("Commande", {
               item: props.item.orders[k[0]],
               infosUser: infosUser,
               infosOrder: infosOrder,
             })
-          : navigation.navigate("UserOrder", { user: props.item });
+          : navigation.navigate("Utilisateurs", { user: props.item });
       }}
     >
       <View style={styles.personItem}>

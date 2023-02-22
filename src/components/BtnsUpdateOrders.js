@@ -59,7 +59,7 @@ export default function BtnsUpdateOrders({ orderId, order }) {
 
         <View style={styles.infoItem}>
           <Text style={styles.infoKey}>Total :</Text>
-          <Text style={styles.infoTotal}>R$ {order.total}</Text>
+          <Text style={styles.infoTotal}>{order.total} € </Text>
         </View>
       </View>
 
